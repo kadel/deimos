@@ -104,10 +104,11 @@ class Image(_Struct):
 
 class Options(_Struct):
 
-    def __init__(self, default=[], append=[], ignore=False):
+    def __init__(self, default=[], append=[], ignore=False, rm=True):
         _Struct.__init__(self, default=coercearray(default),
                                append=coercearray(append),
-                               ignore=coercebool(ignore))
+                               ignore=coercebool(ignore),
+                               rm=coercebool(rm))
 
     def override(self, options=[]):
         a = options if (len(options) > 0 and not self.ignore) else self.default
